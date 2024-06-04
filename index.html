@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Magic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-list">
+                <li class="left-item">Code <span>Magic</span></li>
+                <div class="middle-items">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Skills</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </div>
+                <li class="right-item"><a href="#"><i class="fa-brands fa-github"></i> Git hub</a></li>
+                <li class="menu-icon">&#9776;</li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container" style="height: 100vh; margin-top: -80px;">
+        <div class="elkalam" style="color: white;">
+            <p>Hello, My name is</p>
+            <h1>Abdelrahman <span>Ramadan</span></h1>
+            <p id="dynamic-text">I'm a Front end Developer</p>
+            <div class="social">
+                <div class="whatsapp">
+                    <a href="https://api.whatsapp.com/send?phone=+201092267949&amp;text=Hello" target="_blank"><i class="fa-brands fa-whatsapp"></i> whatsapp</a>
+                </div>
+                <!-- <div class="dis">
+                    <div class="facebook">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                    <div class="ins">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                    <div class="git">
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="img">
+            <img src="Picsart_24-06-02_20-37-24-122.png" alt="Profile Image">
+        </div>
+
+        
+
+    </div>
+<div class="servs">
+            <div class="main">
+                <div class="ser">
+                    <i class="fa-solid fa-code"></i>
+                    <p style="text-align: center;">Front end Developer</p>
+                </div>
+                <div class="ser">
+                    <i class="fa-solid fa-paintbrush"></i>
+                    <p style="text-align: center;">Graphic Designer</p>
+                </div>
+                <div class="ser">
+                    <i class="fa-solid fa-photo-film"></i>
+                    <p style="text-align: center;">Video Editor</p>
+                </div>
+            </div>
+        </div>
+    <script>
+        const menuIcon = document.querySelector('.menu-icon');
+        const middleItems = document.querySelector('.middle-items');
+
+        menuIcon.addEventListener('click', () => {
+            middleItems.classList.toggle('show');
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+    const textElement = document.getElementById("dynamic-text");
+    const texts = ["I'm a Front end Developer", "I'm a Graphic Designer"];
+    let currentIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let delayAfterFullText = 2000; // فترة الانتظار بعد كتابة النص بالكامل
+
+    function type() {
+        const currentText = texts[currentIndex];
+        if (isDeleting) {
+            textElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+            if (charIndex === 0) {
+                isDeleting = false;
+                currentIndex = (currentIndex + 1) % texts.length;
+            }
+        } else {
+            textElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+            if (charIndex === currentText.length) {
+                setTimeout(() => {
+                    isDeleting = true;
+                    type(); // استدعاء الدالة فورًا للبدء في الحذف بعد الانتظار
+                }, delayAfterFullText); // انتظار بعد كتابة النص بالكامل
+                return; // الخروج من الدالة مؤقتًا خلال فترة الانتظار
+            }
+        }
+        setTimeout(type, isDeleting ? 100 : 200);
+    }
+
+    type();
+});
+
+
+
+
+    </script>
+</body>
+</html>
